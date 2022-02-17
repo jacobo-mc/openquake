@@ -1,0 +1,68 @@
+.TH PAR 1 "27 February 2001" "Version 0.02.01" "Linux User's Manual"
+.SH NAME
+par \- Quake pak archiving utility
+.SH SYNOPSIS
+.B par
+.B -c
+|
+.B -l
+|
+.B -x
+.RB [ -fhtv ]
+.I archive
+.RI [ "file list" ]
+.SH DESCRIPTION
+.B par
+is an archiving program which processes pak files used by Quake and QuakeII.
+A pak archive contains only the file names -- together with the path below id1
+(QuakeI) and baseq2 (Quake2) -- and the file data. Neither access permissions
+nor time stamps are stored.
+.SH ACTIONS
+One of the following actions must be specified:
+.TP
+.B -c
+create a new archive
+.TP
+.B -l
+list the contents of the specified archive
+.TP
+.B -x
+extract files from the specified archive
+.SH OPTIONS
+.TP
+.B -f
+force some actions, suppress error messages
+.TP
+.B -h
+display some (more or less) helpful information and exit successfully
+.TP
+.B -t
+the files to process are specified in the files given by
+.IR "file list"
+.TP
+.B -v
+be more talkative
+.SH EXAMPLES
+Extract map base1.bsp from pak0.pak:
+.TP
+.BR "par -xv" " pak0.pak maps/base1.bsp"
+.TP
+Create a list with the names of all maps from in pak0.pak:
+.TP
+.BR "par -l" " pak0.pak | grep .bsp > list"
+.TP
+Extract the files specified in list:
+.TP
+.BR "par -xvt" " pak0.pak list"
+.TP
+Create a new archive from these maps:
+.TP
+.BR "par -cvt" " pak9.pak list"
+.TP
+Replace pak0.pak by an empty archive :-)
+.TP
+.BR "par -cv" " pak0.pak"
+.SH AUTHOR
+Steffen Solyga <solyga@absinth.net>
+.SH DATE
+27 February 2001
